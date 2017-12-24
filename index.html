@@ -10,7 +10,7 @@
 
 
 <fb:login-button
-  scope="public_profile,email"
+  scope="public_profile,email,user_likes"
   onlogin="checkLoginState();">
 </fb:login-button>
 
@@ -111,6 +111,15 @@
          console.log(response);
        });
      }
+
+
+       function checkLoginState() {
+         FB.getLoginStatus(function(response) {
+           FB.api('me/likes', function(res) {
+             console.log(res);
+           });
+         });
+       }
     </script>
 
   </body>
